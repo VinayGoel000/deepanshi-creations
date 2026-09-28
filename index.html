@@ -4,218 +4,203 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#fff8fa">
+  <meta name="theme-color" content="#fffaf9">
   <link rel="icon" href="data:,">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
   <title>Deepanshi Sharma — Handmade Creations</title>
   <style>
     :root{
       color-scheme:light;
-      --bg:#fffafb;--paper:#ffffff;--soft:#fcecf1;--soft-2:#f7e2e9;--ink:#25161d;--muted:#6b5560;
-      --line:#ead4dc;--rose:#be3e70;--rose-dark:#81264d;--blush:#eaa0b9;--green:#1f815b;--gold:#a76d1f;
-      --shadow:0 18px 48px rgba(93,32,58,.13);--shadow-sm:0 8px 24px rgba(93,32,58,.09);
-      --sans:"DM Sans",sans-serif;--serif:"Playfair Display",serif;
+      --bg:#fffaf9;--paper:#ffffff;--paper-2:#fff5f6;--blush:#f4ddd9;--blush-2:#f8ebe8;--rose:#b73562;--rose-dark:#8e294e;
+      --ink:#2d2024;--muted:#705f64;--line:#e8d9d8;--sage:#edf2e9;--green:#163f34;--green-2:#225747;--gold:#b47a42;
+      --shadow:0 12px 34px rgba(85,42,50,.10);--sans:"DM Sans",sans-serif;--serif:"Libre Baskerville",Georgia,serif;
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    html{scroll-behavior:smooth;scroll-padding-top:96px}
     body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
     body.locked{overflow:hidden}
     img,video{display:block;max-width:100%}
     button,input,textarea,select{font:inherit;color:inherit}
-    a{color:inherit}
     button{cursor:pointer}
+    a{color:inherit}
     :focus-visible{outline:3px solid var(--rose);outline-offset:3px}
-    .skip{position:fixed;left:14px;top:14px;z-index:300;background:var(--ink);color:#fff;padding:10px 14px;text-decoration:none;transform:translateY(-180%)}
+    .skip{position:fixed;left:14px;top:14px;z-index:300;background:var(--green);color:#fff;padding:10px 14px;text-decoration:none;transform:translateY(-180%)}
     .skip:focus{transform:translateY(0)}
-    .wrap{width:min(1220px,calc(100% - 42px));margin:auto}
-    .announcement{background:var(--rose-dark);color:#fff;text-align:center;padding:9px 16px;font-size:12px;font-weight:700;letter-spacing:.02em}
-    .header{position:sticky;top:0;z-index:60;background:rgba(255,250,251,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-    .nav{min-height:76px;display:flex;align-items:center;justify-content:center;gap:25px}
-    .nav-links{display:flex;gap:23px;align-items:center}
-    .nav-links a{text-decoration:none;font-size:13px;font-weight:700}
+    .wrap{width:min(1240px,calc(100% - 40px));margin:auto}
+    .announcement{background:var(--rose-dark);color:#fff;text-align:center;padding:8px 16px;font-size:12px;font-weight:700}
+    .header{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 94%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .nav{min-height:78px;display:flex;align-items:center;gap:28px}
+    .brand{text-decoration:none;display:flex;flex-direction:column;min-width:210px}
+    .brand strong{font:700 21px/1.15 var(--serif)}
+    .brand span{font-size:9px;letter-spacing:.04em;color:var(--muted);margin-top:4px}
+    .nav-links{display:flex;gap:21px;align-items:center;margin-left:auto}
+    .nav-links a{text-decoration:none;font-size:12px;font-weight:700;white-space:nowrap}
     .nav-links a:hover{color:var(--rose-dark)}
-    .nav-actions{display:flex;gap:8px;align-items:center;margin-left:auto}
-    .nav-cta{border:0;background:var(--rose-dark);color:#fff;min-height:44px;padding:11px 15px;font-weight:700}
-    .icon-btn{width:44px;height:44px;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;position:relative}
+    .nav-actions{display:flex;gap:8px;align-items:center}
+    .nav-cta{border:0;background:var(--rose-dark);color:#fff;min-height:42px;padding:10px 15px;font-size:11px;font-weight:700}
+    .icon-btn{width:42px;height:42px;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;position:relative}
     .icon-btn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8}
-    .cart-count{position:absolute;right:-5px;top:-5px;min-width:20px;height:20px;border-radius:50%;background:var(--rose);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:800;border:2px solid var(--paper)}
+    .cart-count{position:absolute;right:-5px;top:-5px;min-width:19px;height:19px;border-radius:50%;background:var(--rose);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:800;border:2px solid var(--paper)}
     .menu-btn{display:none}
-    .search-bar{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);padding:14px 0;box-shadow:var(--shadow-sm)}
+    .mobile-menu{display:none}
+    .search-bar{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);padding:13px 0;box-shadow:var(--shadow)}
     .search-bar.open{display:block}
     .search-wrap{display:flex;gap:10px}
     .search-wrap input{width:100%;border:1px solid var(--line);background:var(--bg);padding:13px 14px}
-    .search-wrap button{border:0;background:var(--ink);color:#fff;padding:0 18px;font-weight:700}
-    .button{border:1px solid var(--ink);background:transparent;color:var(--ink);min-height:50px;padding:13px 19px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;transition:transform .18s,background .18s,color .18s}
+    .search-wrap button{border:0;background:var(--green);color:#fff;padding:0 18px;font-weight:700}
+    .button{border:1px solid var(--ink);background:transparent;color:var(--ink);min-height:46px;padding:12px 18px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:700;transition:transform .18s,background .18s,color .18s}
     .button:hover{transform:translateY(-2px)}
     .button.primary{background:var(--rose-dark);border-color:var(--rose-dark);color:#fff}
-    .button.light{background:#fff;border-color:#fff;color:var(--rose-dark)}
-    .eyebrow{margin:0 0 12px;color:var(--rose-dark);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .button.light{background:#fff;border-color:#fff;color:#7e2445}
+    .eyebrow{margin:0 0 10px;color:var(--rose-dark);font:600 14px/1.3 var(--serif);font-style:italic}
     h1,h2,h3,p{overflow-wrap:anywhere}
     h1,h2,h3{font-family:var(--serif)}
-    h1{font-size:clamp(54px,7vw,92px);line-height:.96;letter-spacing:-.04em;margin:0;max-width:720px}
-    h1 em{font-style:normal;color:var(--rose)}
-    h2{font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.03em;margin:0}
-    .hero{display:grid;grid-template-columns:.92fr 1.08fr;gap:58px;align-items:center;padding:62px 0 72px}
-    .hero-copy>p:not(.eyebrow){font-size:17px;line-height:1.7;color:var(--muted);max-width:590px;margin:24px 0 29px}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:11px}
-    .hero-trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:28px;font-size:12px;color:var(--muted);font-weight:700}
-    .hero-trust span::before{content:"✓";color:var(--green);margin-right:7px}
-    .hero-art{position:relative;min-height:590px}
-    .hero-main{position:absolute;inset:0 11% 7% 0;overflow:hidden;box-shadow:var(--shadow);background:var(--soft)}
-    .hero-main img{width:100%;height:100%;object-fit:cover;object-position:center 44%}
-    .hero-small{position:absolute;right:0;bottom:0;width:41%;height:43%;border:9px solid var(--paper);box-shadow:var(--shadow-sm);overflow:hidden;background:var(--soft)}
-    .hero-small img{width:100%;height:100%;object-fit:cover}
-    .hero-label{position:absolute;right:1%;top:4%;max-width:190px;background:var(--paper);padding:17px 18px;box-shadow:var(--shadow-sm);font:700 20px/1.12 var(--serif);transform:rotate(2deg)}
-    .hero-label small{display:block;font:800 10px/1.4 var(--sans);text-transform:uppercase;letter-spacing:.08em;color:var(--rose-dark);margin-bottom:6px}
-    .trust-strip{background:var(--paper);border-block:1px solid var(--line)}
-    .trust-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-    .trust-item{padding:22px 18px;border-right:1px solid var(--line)}
-    .trust-item:last-child{border-right:0}
-    .trust-item strong{display:block;font:700 19px/1.1 var(--serif);margin-bottom:5px}
-    .trust-item span{font-size:11px;color:var(--muted)}
-    section{padding:88px 0}
-    .section-head{display:flex;justify-content:space-between;align-items:end;gap:38px;margin-bottom:32px}
-    .section-head>p{max-width:500px;margin:0;color:var(--muted);line-height:1.65}
-    .category-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:26px 22px}
-    .category-tile{border:0;background:transparent;padding:0;text-align:center;min-width:0}
-    .category-image{aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--soft);border:1px solid var(--line);transition:transform .22s,box-shadow .22s}
+    h1{font-size:clamp(42px,5.6vw,72px);line-height:1.08;letter-spacing:-.025em;margin:0;max-width:690px}
+    h2{font-size:clamp(30px,3.8vw,48px);line-height:1.06;letter-spacing:-.025em;margin:0}
+    .hero{background:var(--blush)}
+    .hero-inner{display:grid;grid-template-columns:.92fr 1.08fr;min-height:540px;align-items:stretch}
+    .hero-copy{padding:72px 56px 72px 10px;display:flex;flex-direction:column;justify-content:center}
+    .hero-copy>p:not(.eyebrow){font-size:15px;line-height:1.7;color:var(--muted);max-width:580px;margin:22px 0 26px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+    .hero-art{position:relative;min-height:540px;background:var(--paper-2);overflow:hidden}
+    .hero-art .main-image{width:100%;height:100%;object-fit:cover}
+    .hero-card{position:absolute;background:var(--paper);box-shadow:var(--shadow);overflow:hidden}
+    .hero-card.one{left:5%;bottom:7%;width:25%;aspect-ratio:1}
+    .hero-card.two{right:5%;top:9%;width:27%;aspect-ratio:1}
+    .hero-card img{width:100%;height:100%;object-fit:cover}
+    .hero-note{position:absolute;right:29%;bottom:8%;background:var(--paper);padding:18px 20px;max-width:170px;text-align:center;box-shadow:var(--shadow);font:700 17px/1.35 var(--serif);transform:rotate(-2deg)}
+    section{padding:72px 0}
+    .section-head{text-align:center;margin:0 auto 32px;max-width:760px}
+    .section-head.compact{margin-bottom:23px}
+    .section-head p:last-child{color:var(--muted);line-height:1.6;margin:12px auto 0;max-width:600px;font-size:13px}
+    .category-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:22px}
+    .category-tile{border:0;background:transparent;padding:0;text-align:center;min-width:0;color:var(--ink)}
+    .category-image{display:block;aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .2s}
     .category-image img{width:100%;height:100%;object-fit:cover}
-    .category-tile:hover .category-image,.category-tile:focus-visible .category-image{transform:translateY(-4px);box-shadow:var(--shadow-sm)}
-    .category-tile strong{display:block;font-size:11px;line-height:1.35;margin-top:12px}
+    .category-tile:hover .category-image{transform:translateY(-4px)}
+    .category-tile strong{display:block;font:700 14px/1.35 var(--serif);margin-top:12px}
+    .category-tile small{display:block;font-size:10px;line-height:1.45;color:var(--muted);margin-top:4px}
+    .storefront-row{display:grid;grid-template-columns:1.75fr 1fr 1fr;gap:14px;padding-top:12px}
+    .store-card{background:var(--paper);border:1px solid var(--line);padding:22px;min-width:0}
+    .store-card.blush{background:var(--paper-2)}
+    .store-card.sage{background:var(--sage)}
+    .store-card-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:17px}
+    .store-card h3{font-size:22px;margin:0}
+    .small-link{font-size:10px;color:var(--rose-dark);font-weight:800;text-underline-offset:3px}
+    .featured-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .featured-item{min-width:0}
+    .featured-item img{width:100%;aspect-ratio:1/1.05;object-fit:cover;background:var(--blush-2)}
+    .featured-item strong{display:block;font:700 12px/1.3 var(--serif);margin:8px 0 4px}
+    .featured-item span{font-size:9px;color:var(--rose-dark);font-weight:700}
+    .custom-preview p,.why-list p{font-size:11px;line-height:1.55;color:var(--muted);margin:0 0 15px}
+    .mini-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:18px}
+    .mini-gallery img{width:100%;aspect-ratio:1;object-fit:cover}
+    .why-list{display:grid;gap:13px}
+    .why-item{display:grid;grid-template-columns:31px 1fr;gap:10px;align-items:start}
+    .why-icon{width:31px;height:31px;border:1px solid color-mix(in srgb,var(--green-2) 45%,var(--line));border-radius:50%;display:grid;place-items:center;color:var(--green-2);font-weight:800}
+    .why-item strong{display:block;font:700 12px/1.3 var(--serif)}
+    .why-item p{margin:3px 0 0;font-size:9px}
     .shop-section{background:var(--paper)}
-    .shop-tools{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}
-    .filter-label{font-size:12px;color:var(--muted)}
+    .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 auto 28px}
+    .tab{border:1px solid var(--line);background:var(--bg);padding:11px 15px;font-size:11px;font-weight:700;color:var(--ink)}
+    .tab.active,.tab:hover{background:var(--rose-dark);border-color:var(--rose-dark);color:#fff}
+    .shop-tools{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}
+    .filter-label{font-size:11px;color:var(--muted)}
     .filter-label strong{color:var(--ink)}
-    .text-button{border:0;background:transparent;color:var(--rose-dark);font-weight:800;text-decoration:underline;text-underline-offset:4px;padding:8px}
-    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 18px}
+    .text-button{border:0;background:transparent;color:var(--rose-dark);font-weight:800;text-decoration:underline;text-underline-offset:4px;padding:8px;font-size:11px}
+    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px 16px}
     .product{min-width:0;display:flex;flex-direction:column}
     .product[hidden]{display:none}
-    .product-image{aspect-ratio:4/4.7;overflow:hidden;background:var(--soft);position:relative}
-    .product-image img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-    .product:hover .product-image img{transform:scale(1.035)}
-    .product-image.landscape img{object-position:center}
-    .product-badge{position:absolute;left:10px;top:10px;background:rgba(255,255,255,.95);padding:7px 9px;font-size:9px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 3px 12px rgba(0,0,0,.08)}
-    .product-body{padding:15px 1px 0;display:flex;flex-direction:column;flex:1}
-    .product h3{font-size:22px;line-height:1.08;margin:0 0 7px}
-    .product-copy{font-size:12px;line-height:1.55;color:var(--muted);margin:0 0 13px;flex:1}
-    .product-bottom{border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-    .price{font-size:11px;color:var(--rose-dark);font-weight:800}
-    .add-cart{border:0;background:var(--ink);color:#fff;padding:10px 12px;font-size:11px;font-weight:800;white-space:nowrap}
-    .add-cart.added{background:var(--green)}
-    .empty{grid-column:1/-1;padding:40px;background:var(--soft);text-align:center;color:var(--muted)}
-    .custom-band{padding:0}
-    .custom-inner{background:var(--rose-dark);color:#fff;display:grid;grid-template-columns:1.1fr .9fr;overflow:hidden}
-    .custom-copy{padding:68px clamp(28px,6vw,76px)}
-    .custom-copy .eyebrow{color:#ffd5e3}
-    .custom-copy h2{max-width:680px}
-    .custom-copy p{max-width:570px;line-height:1.7;color:#fbe7ee;margin:20px 0 28px}
-    .custom-image{min-height:460px}
-    .custom-image img{width:100%;height:100%;object-fit:cover}
-    .reason-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-    .reason{background:var(--bg);padding:30px 24px;min-height:200px}
-    .reason-number{font:700 32px/1 var(--serif);color:var(--rose);display:block;margin-bottom:28px}
-    .reason h3{font-size:22px;margin:0 0 9px}
-    .reason p{font-size:12px;line-height:1.6;color:var(--muted);margin:0}
-    .showcase{padding-top:18px}
-    .showcase-row{display:grid;grid-template-columns:1fr 1fr;min-height:420px;background:var(--paper);margin-bottom:20px}
-    .showcase-row:nth-child(even) .showcase-image{order:2}
-    .showcase-image{overflow:hidden}
-    .showcase-image img{width:100%;height:100%;object-fit:cover}
-    .showcase-copy{padding:56px clamp(28px,6vw,72px);display:flex;flex-direction:column;justify-content:center}
-    .showcase-copy h3{font-size:clamp(34px,4.4vw,56px);line-height:1;margin:0 0 17px}
-    .showcase-copy p{color:var(--muted);line-height:1.7;margin:0 0 23px}
-    .studio{background:var(--soft)}
-    .film-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .film{margin:0;background:var(--paper);box-shadow:var(--shadow-sm)}
-    .film video{width:100%;aspect-ratio:4/5;object-fit:cover;background:#130d10}
-    .film figcaption{padding:15px 17px;border-top:3px solid var(--blush)}
-    .film strong{font:700 21px/1.1 var(--serif);display:block}
-    .film span{font-size:11px;color:var(--muted)}
-    .moments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .moment{background:var(--paper);padding:28px;border-top:3px solid var(--rose)}
-    .moment h3{font-size:23px;margin:0 0 9px}
-    .moment p{color:var(--muted);font-size:13px;line-height:1.65;margin:0}
-    .journey{padding-bottom:0}
-    .journey-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
-    .journey-strip img{width:100%;aspect-ratio:1;object-fit:cover}
-    .order-section{background:var(--ink);color:#fff}
-    .order-section .eyebrow{color:#ffc9dc}
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:40px}
-    .step{border-top:1px solid rgba(255,255,255,.25);padding-top:20px}
-    .step span{font:700 36px/1 var(--serif);color:#f4a9c4}
-    .step h3{font-size:23px;margin:20px 0 8px}
-    .step p{font-size:12px;line-height:1.6;color:#dbcbd2;margin:0}
-    footer{background:var(--paper);border-top:1px solid var(--line);padding:44px 0}
-    .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;align-items:start}
-    .footer-grid h3{font-size:23px;margin:0 0 12px}
-    .footer-grid p{font-size:12px;color:var(--muted);line-height:1.65;max-width:460px;margin:0}
-    .footer-links{display:grid;gap:9px}
-    .footer-links a{font-size:12px;text-underline-offset:4px}
-    .social-link{width:43px;height:43px;border:1px solid var(--line);display:grid;place-items:center;text-decoration:none}
-    .social-link svg{width:20px;height:20px;fill:currentColor}
-    .overlay{position:fixed;inset:0;background:rgba(22,9,15,.64);z-index:120;opacity:0;pointer-events:none;transition:opacity .2s}
+    .product-image{aspect-ratio:4/4.7;overflow:hidden;background:var(--blush-2);position:relative}
+    .product-image img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+    .product:hover .product-image img{transform:scale(1.025)}
+    .product-badge{position:absolute;left:9px;top:9px;background:color-mix(in srgb,var(--paper) 94%,transparent);padding:6px 8px;font-size:8px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+    .product-body{padding:12px 1px 0;display:flex;flex-direction:column;flex:1}
+    .product h3{font-size:18px;line-height:1.15;margin:0 0 6px}
+    .product-copy{font-size:10px;line-height:1.5;color:var(--muted);margin:0 0 11px;flex:1}
+    .product-bottom{border-top:1px solid var(--line);padding-top:10px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .price{font-size:10px;color:var(--rose-dark);font-weight:800}
+    .add-cart{border:0;background:var(--rose-dark);color:#fff;padding:9px 10px;font-size:9px;font-weight:800;white-space:nowrap}
+    .add-cart.added{background:var(--green-2)}
+    .empty{grid-column:1/-1;padding:38px;background:var(--blush-2);text-align:center;color:var(--muted)}
+    .collection-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px}
+    .collection-card{min-height:290px;display:grid;grid-template-columns:1fr 1fr;background:var(--blush-2);overflow:hidden;border:1px solid var(--line)}
+    .collection-card:nth-child(2),.collection-card:nth-child(3){grid-template-columns:1fr}
+    .collection-card img{width:100%;height:100%;object-fit:cover;min-height:190px}
+    .collection-copy{padding:25px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+    .collection-copy h3{font-size:24px;margin:0 0 9px}
+    .collection-copy p{font-size:11px;line-height:1.55;color:var(--muted);margin:0 0 16px}
+    .collection-card:nth-child(2) .collection-copy,.collection-card:nth-child(3) .collection-copy{min-height:150px}
+    .gallery-section{background:var(--blush-2)}
+    .film-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .film{margin:0;background:var(--paper);border:1px solid var(--line)}
+    .film video{width:100%;aspect-ratio:4/3;object-fit:cover;background:#130d10}
+    .film figcaption{padding:12px 14px}
+    .film strong{font:700 16px/1.2 var(--serif);display:block}
+    .film span{font-size:9px;color:var(--muted)}
+    .bottom-row{display:grid;grid-template-columns:1fr 1.45fr 1.1fr;gap:14px}
+    .bottom-card{background:var(--paper);border:1px solid var(--line);padding:22px;min-width:0}
+    .bottom-card h3{font-size:21px;margin:0 0 14px}
+    .placeholder{font-size:10px;font-weight:800;color:var(--rose-dark);background:var(--blush-2);display:inline-block;padding:6px 8px;margin-bottom:13px}
+    .review-shell{display:grid;grid-template-columns:54px 1fr;gap:12px;align-items:start}
+    .review-shell img{width:54px;height:54px;border-radius:50%;object-fit:cover;filter:saturate(.75)}
+    .review-shell p{font-size:11px;line-height:1.6;color:var(--muted);margin:0}
+    .journey-images{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-bottom:14px}
+    .journey-images img{width:100%;aspect-ratio:1;object-fit:cover}
+    .instagram{margin:auto;display:flex;width:max-content}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .step{text-align:center;min-width:0}
+    .step span{width:36px;height:36px;border-radius:50%;background:var(--blush-2);color:var(--rose-dark);display:grid;place-items:center;margin:0 auto 8px;font:700 15px/1 var(--serif)}
+    .step strong{display:block;font:700 10px/1.35 var(--serif)}
+    footer{background:var(--green);color:#f6eee9;padding:39px 0}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+    .footer-brand{font:700 20px/1.2 var(--serif);margin:0 0 8px}
+    .footer-grid p{font-size:10px;color:#d8cbc7;line-height:1.6;max-width:420px;margin:0}
+    .footer-grid h3{font-size:16px;margin:0 0 11px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{font-size:10px;text-underline-offset:3px}
+    .footer-actions{display:flex;gap:8px;align-items:center}
+    .social-link{width:41px;height:41px;border:1px solid rgba(255,255,255,.34);display:grid;place-items:center;text-decoration:none}
+    .social-link svg{width:19px;height:19px;fill:currentColor}
+    .overlay{position:fixed;inset:0;background:rgba(20,10,13,.68);z-index:120;opacity:0;pointer-events:none;transition:opacity .2s}
     .overlay.open{opacity:1;pointer-events:auto}
     .drawer{position:fixed;right:0;top:0;bottom:0;z-index:130;width:min(480px,100%);background:var(--paper);box-shadow:-22px 0 70px rgba(0,0,0,.24);transform:translateX(102%);transition:transform .25s;display:flex;flex-direction:column}
     .drawer.open{transform:translateX(0)}
     .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid var(--line)}
-    .drawer-head h2{font-size:36px}
-    .close-btn{width:42px;height:42px;border:1px solid var(--line);background:var(--paper);font-size:24px}
+    .drawer-head h2{font-size:32px}.close-btn{width:42px;height:42px;border:1px solid var(--line);background:var(--paper);font-size:24px}
     .drawer-body{padding:20px 22px 40px;overflow:auto}
-    .session-note{font-size:11px;color:var(--muted);line-height:1.5;background:var(--soft);padding:11px 12px;margin:0 0 18px}
+    .session-note{font-size:11px;color:var(--muted);line-height:1.5;background:var(--blush-2);padding:11px 12px;margin:0 0 18px}
     .cart-empty{text-align:center;padding:42px 14px;color:var(--muted)}
     .cart-item{display:grid;grid-template-columns:68px 1fr auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
-    .cart-item img{width:68px;height:64px;object-fit:cover}
-    .cart-item h3{font-size:18px;line-height:1.08;margin:0 0 7px}
-    .qty{display:flex;align-items:center;gap:4px}
-    .qty button{width:29px;height:29px;border:1px solid var(--line);background:var(--paper)}
-    .qty span{min-width:27px;text-align:center;font-size:11px;font-weight:800}
+    .cart-item img{width:68px;height:64px;object-fit:cover}.cart-item h3{font-size:17px;line-height:1.1;margin:0 0 7px}
+    .qty{display:flex;align-items:center;gap:4px}.qty button{width:29px;height:29px;border:1px solid var(--line);background:var(--paper)}.qty span{min-width:27px;text-align:center;font-size:11px;font-weight:800}
     .remove{border:0;background:transparent;color:var(--muted);font-size:10px;text-decoration:underline;padding:5px}
-    .checkout{border-top:1px solid var(--line);margin-top:22px;padding-top:22px}
-    .checkout h3{font-size:28px;margin:0 0 7px}
-    .checkout>p{font-size:12px;color:var(--muted);line-height:1.55;margin:0 0 16px}
-    .field{margin-bottom:12px}
-    .field label{display:block;font-size:11px;font-weight:800;margin-bottom:6px}
-    .field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:var(--bg);padding:12px;border-radius:0}
-    .field textarea{min-height:90px;resize:vertical}
-    .checkout .button,.custom-form .button{width:100%}
-    .form-error{min-height:20px;color:#b11f47;font-size:11px;margin:8px 0}
+    .checkout{border-top:1px solid var(--line);margin-top:22px;padding-top:22px}.checkout h3{font-size:25px;margin:0 0 7px}.checkout>p{font-size:11px;color:var(--muted);line-height:1.55;margin:0 0 16px}
+    .field{margin-bottom:12px}.field label{display:block;font-size:10px;font-weight:800;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:var(--bg);padding:12px;border-radius:0}.field textarea{min-height:86px;resize:vertical}
+    .checkout .button,.custom-form .button{width:100%}.form-error{min-height:20px;color:#e04d72;font-size:11px;margin:8px 0}
     .modal{position:fixed;left:50%;top:50%;z-index:140;width:min(580px,calc(100% - 28px));max-height:calc(100vh - 28px);overflow:auto;background:var(--paper);box-shadow:var(--shadow);transform:translate(-50%,-45%) scale(.98);opacity:0;pointer-events:none;transition:.22s}
-    .modal.open{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto}
-    .modal-head{display:flex;justify-content:space-between;gap:18px;padding:23px 24px 14px}
-    .modal-head h2{font-size:38px}
-    .modal-copy{font-size:12px;line-height:1.6;color:var(--muted);margin:0;padding:0 24px 16px}
-    .custom-form{padding:0 24px 26px}
-    .status{position:fixed;left:50%;bottom:24px;transform:translate(-50%,18px);background:var(--ink);color:#fff;padding:11px 15px;font-size:12px;font-weight:700;z-index:180;opacity:0;pointer-events:none;transition:.2s;text-align:center}
-    .status.show{opacity:1;transform:translate(-50%,0)}
-    .mobile-menu{display:none}
-    @media(max-width:1040px){
-      .nav-links{display:none}.menu-btn{display:grid}.nav-cta{display:none}.nav{justify-content:flex-start}
-      .mobile-menu{display:none;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);padding:14px 21px 20px;box-shadow:var(--shadow-sm)}
-      .mobile-menu.open{display:grid;gap:4px}.mobile-menu a,.mobile-menu button{text-align:left;padding:12px;border:0;background:transparent;text-decoration:none;font-weight:700}
-      .hero{grid-template-columns:1fr;gap:36px}.hero-art{min-height:540px}
-      .category-grid{grid-template-columns:repeat(4,1fr);row-gap:26px}
-      .product-grid{grid-template-columns:repeat(3,1fr)}
-      .reason-grid{grid-template-columns:1fr 1fr}.custom-inner{grid-template-columns:1fr 1fr}
+    .modal.open{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto}.modal-head{display:flex;justify-content:space-between;gap:18px;padding:23px 24px 14px}.modal-head h2{font-size:34px}.modal-copy{font-size:11px;line-height:1.6;color:var(--muted);margin:0;padding:0 24px 16px}.custom-form{padding:0 24px 26px}
+    .status{position:fixed;left:50%;bottom:24px;transform:translate(-50%,18px);background:var(--green);color:#fff;padding:11px 15px;font-size:12px;font-weight:700;z-index:180;opacity:0;pointer-events:none;transition:.2s;text-align:center}.status.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:1080px){
+      .nav-links{display:none}.menu-btn{display:grid}.nav{gap:14px}.brand{min-width:0}.nav-actions{margin-left:auto}.mobile-menu{position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);padding:14px 20px 20px;box-shadow:var(--shadow)}.mobile-menu.open{display:grid;gap:3px}.mobile-menu a,.mobile-menu button{text-align:left;padding:12px;border:0;background:transparent;text-decoration:none;font-weight:700}
+      .category-grid{grid-template-columns:repeat(3,1fr)}.storefront-row{grid-template-columns:1fr 1fr}.featured-store{grid-column:1/-1}.product-grid{grid-template-columns:repeat(3,1fr)}.collection-row{grid-template-columns:1fr 1fr}.collection-card:first-child{grid-column:1/-1}.bottom-row{grid-template-columns:1fr 1fr}.bottom-card.order-card{grid-column:1/-1}
     }
     @media(max-width:760px){
-      .wrap{width:min(100% - 28px,1220px)}.announcement{font-size:10px}.nav{min-height:64px}.nav-actions{gap:6px}
-      .icon-btn{width:42px;height:42px}.hero{padding:42px 0 54px}.hero-art{min-height:420px}.hero-label{width:155px;font-size:16px;padding:13px}
-      .trust-grid{grid-template-columns:1fr 1fr}.trust-item:nth-child(2){border-right:0}.trust-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
-      section{padding:68px 0}.section-head{display:block}.section-head>p{margin-top:15px}
-      .category-grid{grid-template-columns:repeat(2,1fr)}.product-grid{grid-template-columns:1fr 1fr}.product-image{aspect-ratio:4/5.1}
-      .custom-inner{grid-template-columns:1fr}.custom-image{min-height:350px;order:-1}.reason-grid{grid-template-columns:1fr 1fr}
-      .showcase-row{grid-template-columns:1fr;min-height:0}.showcase-row:nth-child(even) .showcase-image{order:0}.showcase-image{height:340px}
-      .film-grid{grid-template-columns:1fr}.film video{aspect-ratio:4/5}.moments-grid{grid-template-columns:1fr}
-      .journey-strip{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}
+      .wrap{width:min(100% - 28px,1240px)}.announcement{font-size:10px}.nav{min-height:66px}.brand strong{font-size:17px}.brand span{font-size:8px}.nav-cta{display:none}
+      .hero-inner{grid-template-columns:1fr;min-height:0}.hero-copy{padding:48px 5px}.hero-art{min-height:410px}.hero-note{right:25%;padding:13px;font-size:14px}
+      section{padding:58px 0}.category-grid{gap:22px 14px}.category-tile strong{font-size:12px}.category-tile small{font-size:9px}
+      .featured-grid{grid-template-columns:1fr 1fr}.product-grid{grid-template-columns:1fr 1fr}.collection-row{grid-template-columns:1fr}.collection-card:first-child{grid-column:auto}.collection-card,.collection-card:nth-child(2),.collection-card:nth-child(3){grid-template-columns:1fr 1fr}.collection-card img{min-height:210px}.film-grid{grid-template-columns:1fr}.film video{aspect-ratio:4/3}
+      .bottom-row{grid-template-columns:1fr}.bottom-card.order-card{grid-column:auto}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}
     }
-    @media(max-width:480px){
-      h1{font-size:49px}.hero-copy>p:not(.eyebrow){font-size:15px}.hero-art{min-height:350px}.hero-main{inset:0 10% 8% 0}.hero-small{border-width:6px}
-      .hero-trust{gap:11px}.trust-item{padding:18px 13px}.trust-item strong{font-size:17px}
-      .category-grid{gap:18px 13px}.product-grid{grid-template-columns:1fr}.product-image{aspect-ratio:4/4.6}
-      .shop-tools{align-items:flex-start}.reason-grid{grid-template-columns:1fr}.reason{min-height:0}.showcase-image{height:300px}
-      .steps{grid-template-columns:1fr}.journey-strip{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr}.footer-grid>div:first-child{grid-column:auto}
+    @media(max-width:520px){
+      .brand span{display:none}.brand strong{font-size:15px}.nav{gap:8px}.icon-btn{width:40px;height:40px}.menu-btn{order:-1}
+      h1{font-size:40px}.hero-copy>p:not(.eyebrow){font-size:14px}.hero-art{min-height:330px}.hero-card.one{width:27%}.hero-card.two{width:30%}.hero-note{display:none}
+      .category-grid{grid-template-columns:repeat(2,1fr)}.storefront-row{grid-template-columns:1fr}.featured-store{grid-column:auto}.store-card{padding:17px}
+      .tabs{justify-content:flex-start}.tab{flex:1 1 calc(50% - 8px)}.product-grid{grid-template-columns:1fr}.product-image{aspect-ratio:4/4.35}
+      .collection-card,.collection-card:nth-child(2),.collection-card:nth-child(3){grid-template-columns:1fr}.collection-card img{height:250px}.collection-card:nth-child(2) .collection-copy,.collection-card:nth-child(3) .collection-copy{min-height:0}
+      .journey-images{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:1fr 1fr;gap:16px}.footer-grid{grid-template-columns:1fr}.footer-grid>div:first-child{grid-column:auto}
       .search-wrap{display:grid;grid-template-columns:1fr auto}.search-wrap button{padding:0 13px}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
@@ -223,156 +208,127 @@
 </head>
 <body>
   <a class="skip" href="#shop">Skip to products</a>
-  <div class="announcement">Handmade in small batches · Prices and availability confirmed on WhatsApp</div>
+  <div class="announcement">Handmade • Customized • With Love — prices and availability confirmed on WhatsApp</div>
   <header class="header">
     <div class="wrap nav">
       <button class="icon-btn menu-btn" id="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#home">Home</a><a href="#shop">Shop</a><a href="#custom">Custom Creations</a><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a>
-      </nav>
+      <a class="brand" href="#home"><strong>Deepanshi Sharma</strong><span>Handmade • Customized • With Love</span></a>
+      <nav class="nav-links" aria-label="Main navigation"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#custom">Custom Creations</a><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
       <div class="nav-actions">
-        <button class="nav-cta custom-trigger" type="button">Create Something Custom</button>
         <button class="icon-btn" id="search-button" type="button" aria-label="Search products" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></button>
-        <button class="icon-btn" id="account-button" type="button" aria-label="Account information"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-4 3-6 7-6s6.3 2 7 6"/></svg></button>
         <button class="icon-btn" id="open-cart" type="button" aria-label="Open cart" aria-haspopup="dialog" aria-controls="cart-drawer"><svg viewBox="0 0 24 24"><path d="M3 4h2l2 10h10l2-7H6M9 20h.01M17 20h.01"/></svg><span class="cart-count" id="cart-count">0</span></button>
+        <button class="nav-cta custom-trigger" type="button">Create Something Custom</button>
       </div>
       <div class="mobile-menu" id="mobile-menu"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#custom">Custom Creations</a><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a><button class="custom-trigger" type="button">Create Something Custom</button></div>
     </div>
-    <div class="search-bar" id="search-bar"><div class="wrap search-wrap"><input id="product-search" type="search" placeholder="Search clay, devotional, flowers, gifts…" aria-label="Search the collection"><button id="search-close" type="button">Close</button></div></div>
+    <div class="search-bar" id="search-bar"><div class="wrap search-wrap"><input id="product-search" type="search" placeholder="Search clay, coasters, devotional art, gifts…" aria-label="Search the collection"><button id="search-close" type="button">Close</button></div></div>
   </header>
 
   <main>
-    <section class="hero wrap" id="home" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Handcrafted by Deepanshi Sharma</p>
-        <h1 id="hero-title">Handcrafted with <em>love, colour & soul.</em></h1>
-        <p>Discover joyful décor, thoughtful gifts and devotional art made slowly by hand. Pick a favourite or share an idea for something completely your own.</p>
-        <div class="hero-actions"><a class="button primary" href="#categories">Explore Our Collections</a><button class="button custom-trigger" type="button">Start a Custom Order</button></div>
-        <div class="hero-trust"><span>Handmade details</span><span>Customisable pieces</span><span>Direct WhatsApp support</span></div>
-      </div>
-      <div class="hero-art" aria-label="A selection of handmade products">
-        <div class="hero-main"><img src="assets/asset-1.png" alt="Handmade clay family figurines with tiny colourful details"></div>
-        <div class="hero-small"><img src="assets/asset-2.png" alt="Red hibiscus flower hanging décor"></div>
-        <div class="hero-label"><small>Made for your story</small>Small details. Big feelings.</div>
-      </div>
-    </section>
+    <section class="hero" id="home" aria-labelledby="hero-title"><div class="wrap hero-inner">
+      <div class="hero-copy"><p class="eyebrow">Handcrafted with love</p><h1 id="hero-title">Unique creations for every memory & moment.</h1><p>From handmade crafts to personalised gifts, devotional art and creative projects—find something truly special, made just for you.</p><div class="hero-actions"><a class="button primary" href="#categories">Explore Our Collections →</a><button class="button custom-trigger" type="button">Start a Custom Order</button></div></div>
+      <div class="hero-art" aria-label="A selection of Deepanshi Sharma's handmade work"><img class="main-image" src="assets/asset-3.png" alt="Pink handmade lotus coaster with purple and teal details"><span class="hero-card one"><img src="assets/asset-9.png" alt="Traditional handmade doll planter"></span><span class="hero-card two"><img src="assets/asset-2.png" alt="Red hibiscus hanging décor"></span><span class="hero-note">Small creations.<br>Big happiness.</span></div>
+    </div></section>
 
-    <div class="trust-strip"><div class="wrap trust-grid">
-      <div class="trust-item"><strong>Made by hand</strong><span>Every piece has its own character</span></div>
-      <div class="trust-item"><strong>Made for you</strong><span>Colours and details can be personalised</span></div>
-      <div class="trust-item"><strong>Price on request</strong><span>Quoted for the size and finish you choose</span></div>
-      <div class="trust-item"><strong>Easy to order</strong><span>Confirm everything directly on WhatsApp</span></div>
-    </div></div>
-
-    <section class="wrap" id="categories" aria-labelledby="category-title">
-      <div class="section-head"><div><p class="eyebrow">What we create</p><h2 id="category-title">Find your kind of handmade.</h2></div><p>Tap a category to jump straight to pieces in that style. Every collection can inspire a custom order too.</p></div>
+    <section class="wrap" id="categories" aria-labelledby="category-title"><div class="section-head compact"><h2 id="category-title">What We Create</h2><p>Choose a collection to see the right pieces in the shop.</p></div>
       <div class="category-grid">
-        <button class="category-tile" data-category="pipe" type="button"><span class="category-image"><img src="assets/asset-3.png" alt="Pink pipe-cleaner lotus creation"></span><strong>Pipe-Cleaner Creations</strong></button>
-        <button class="category-tile" data-category="clay" type="button"><span class="category-image"><img src="assets/asset-1.png" alt="Clay family figurines"></span><strong>Clay Creations</strong></button>
-        <button class="category-tile" data-category="devotional" type="button"><span class="category-image"><img src="assets/asset-4.png" alt="Hand-painted Hanuman statue"></span><strong>Shringar & Devotional Art</strong></button>
-        <button class="category-tile" data-category="paintings" type="button"><span class="category-image"><img src="assets/asset-5.png" alt="Hand-painted stone deity artwork"></span><strong>Paintings</strong></button>
-        <button class="category-tile" data-category="magnets" type="button"><span class="category-image"><img src="assets/asset-6.png" alt="Colourful mood emoji magnets and coasters"></span><strong>Fridge Magnets</strong></button>
-        <button class="category-tile" data-category="flowers" type="button"><span class="category-image"><img src="assets/asset-2.png" alt="Red handmade hibiscus flowers"></span><strong>Flowers</strong></button>
-        <button class="category-tile" data-category="banquet" type="button"><span class="category-image"><img src="assets/asset-7.png" alt="Golden event and banquet décor arrangement"></span><strong>Banquet Decor</strong></button>
-        <button class="category-tile" data-category="kids" type="button"><span class="category-image"><img src="assets/asset-8.png" alt="Colourful kids toys scene diorama"></span><strong>Kids’ Projects</strong></button>
-        <button class="category-tile" data-category="diy" type="button"><span class="category-image"><img src="assets/asset-9.png" alt="Traditional doll planter craft"></span><strong>DIY Products</strong></button>
-        <button class="category-tile" data-category="gifts" type="button"><span class="category-image"><img src="assets/asset-10.png" alt="Personalised clay couple photo frame"></span><strong>Gifts & Handmade Décor</strong></button>
+        <button class="category-tile" data-category="clay" type="button"><span class="category-image"><img src="assets/asset-1.png" alt="Clay family figurines"></span><strong>Clay Creations</strong><small>Figurines & playful décor</small></button>
+        <button class="category-tile" data-category="devotional" type="button"><span class="category-image"><img src="assets/asset-4.png" alt="Hand-painted Hanuman statue"></span><strong>Devotional Art & Shringar</strong><small>Puja & sacred décor</small></button>
+        <button class="category-tile" data-category="coasters" type="button"><span class="category-image"><img src="assets/asset-3.png" alt="Pink lotus coaster"></span><strong>Coasters & Table Décor</strong><small>Cheerful tabletop details</small></button>
+        <button class="category-tile" data-category="hangings" type="button"><span class="category-image"><img src="assets/asset-2.png" alt="Red hibiscus hanging"></span><strong>Wall & Door Hangings</strong><small>Festive statement pieces</small></button>
+        <button class="category-tile" data-category="kids" type="button"><span class="category-image"><img src="assets/asset-8.png" alt="Kids toys diorama"></span><strong>Kids' Projects</strong><small>Colourful school creations</small></button>
+        <button class="category-tile" data-category="gifts" type="button"><span class="category-image"><img src="assets/asset-10.png" alt="Clay couple photo frame"></span><strong>Gifts & Custom Décor</strong><small>Personal pieces for occasions</small></button>
       </div>
     </section>
 
-    <section class="shop-section" id="shop" aria-labelledby="shop-title"><div class="wrap">
-      <div class="section-head"><div><p class="eyebrow">Featured products</p><h2 id="shop-title">Pieces worth a closer look.</h2></div><p>There are no fixed prices here—materials, scale and custom details shape each quote.</p></div>
-      <div class="shop-tools"><span class="filter-label">Showing: <strong id="active-filter">All creations</strong></span><button class="text-button" id="view-all" type="button">View all products</button></div>
+    <section class="wrap storefront-row" aria-label="Featured products, custom creations and reasons to choose handmade">
+      <article class="store-card featured-store"><div class="store-card-head"><h3>Featured Products</h3><a class="small-link" href="#shop">View all →</a></div><div class="featured-grid">
+        <div class="featured-item"><img src="assets/asset-1.png" alt="Clay family figurines"><strong>Clay Family Figurines</strong><span>Price on request</span></div>
+        <div class="featured-item"><img src="assets/asset-13.png" alt="Pearl lotus coaster"><strong>Pearl Lotus Bloom</strong><span>Price on request</span></div>
+        <div class="featured-item"><img src="assets/asset-15.png" alt="Peacock Mahakal garland"><strong>Mahakal Garland</strong><span>Price on request</span></div>
+        <div class="featured-item"><img src="assets/asset-10.png" alt="Clay couple photo frame"><strong>Clay Couple Frame</strong><span>Price on request</span></div>
+      </div></article>
+      <article class="store-card blush custom-preview" id="custom"><h3>Custom Creations</h3><p>Have a special idea? Share the occasion, colours, size and personal details you have in mind.</p><button class="button primary custom-trigger" type="button">Create Your Custom Order →</button><div class="mini-gallery"><img src="assets/asset-11.png" alt="Avocado décor"><img src="assets/asset-9.png" alt="Traditional doll planter"><img src="assets/asset-7.png" alt="Golden pooja thali"></div></article>
+      <article class="store-card sage why-list" id="about"><h3>Why Choose Us?</h3><div class="why-item"><span class="why-icon">♡</span><div><strong>Made by hand</strong><p>Each piece has its own details and character.</p></div></div><div class="why-item"><span class="why-icon">✎</span><div><strong>Customizable</strong><p>Discuss colours, themes and personal touches.</p></div></div><div class="why-item"><span class="why-icon">✓</span><div><strong>Details confirmed</strong><p>Price, timeline and delivery are agreed first.</p></div></div><div class="why-item"><span class="why-icon">↗</span><div><strong>Direct conversation</strong><p>Order details are handled on WhatsApp.</p></div></div></article>
+    </section>
+
+    <section class="shop-section" id="shop" aria-labelledby="shop-title"><div class="wrap"><div class="section-head"><p class="eyebrow">Browse the collection</p><h2 id="shop-title">Shop by category.</h2><p>Every image is sorted into one collection. Search or use the tabs to find the right piece.</p></div>
+      <div class="tabs" role="group" aria-label="Filter products by category">
+        <button class="tab active" data-category="all" type="button">All</button><button class="tab" data-category="clay" type="button">Clay Creations</button><button class="tab" data-category="devotional" type="button">Devotional Art & Shringar</button><button class="tab" data-category="coasters" type="button">Coasters & Table Décor</button><button class="tab" data-category="hangings" type="button">Wall & Door Hangings</button><button class="tab" data-category="kids" type="button">Kids' Projects</button><button class="tab" data-category="gifts" type="button">Gifts & Custom Décor</button>
+      </div>
+      <div class="shop-tools"><span class="filter-label">Showing: <strong id="active-filter">All</strong></span><button class="text-button" id="view-all" type="button">View all products</button></div>
       <div class="product-grid" id="product-grid">
-        <article class="product" data-id="clay-family" data-category="clay gifts" data-title="Clay Family Figurines" data-image="assets/asset-1.png"><div class="product-image"><img src="assets/asset-1.png" alt="Cute handmade clay family figurines"><span class="product-badge">Clay creation</span></div><div class="product-body"><h3>Clay Family Figurines</h3><p class="product-copy">A playful little family shaped in clay with tiny personalised details.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="hanuman" data-category="devotional diy" data-title="Hand-painted Hanuman Statue" data-image="assets/asset-4.png"><div class="product-image"><img src="assets/asset-4.png" alt="Colourful hand-painted Hanuman statue"><span class="product-badge">Devotional art</span></div><div class="product-body"><h3>Hand-painted Hanuman Statue</h3><p class="product-copy">Detailed devotional colourwork with a vibrant, expressive finish.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="stone-deity-pro" data-category="devotional paintings gifts" data-title="Painted Stone Deity" data-image="assets/asset-5.png"><div class="product-image"><img src="assets/asset-5.png" alt="Hand-painted stone deity on a decorated pearl base"><span class="product-badge">Hand-painted</span></div><div class="product-body"><h3>Painted Stone Deity</h3><p class="product-copy">A smooth painted stone presented on a pearl and mirror-work base.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="hibiscus" data-category="flowers pipe diy banquet" data-title="Hibiscus Hanging Décor" data-image="assets/asset-2.png"><div class="product-image"><img src="assets/asset-2.png" alt="Red hibiscus flowers arranged as hanging décor"><span class="product-badge">Floral décor</span></div><div class="product-body"><h3>Hibiscus Hanging Décor</h3><p class="product-copy">Statement red blooms arranged to brighten a doorway or festive corner.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="avocado" data-category="clay diy gifts" data-title="Avocado Desk Décor" data-image="assets/asset-11.png"><div class="product-image"><img src="assets/asset-11.png" alt="Cute smiling avocado desk décor"><span class="product-badge">Cute décor</span></div><div class="product-body"><h3>Avocado Desk Décor</h3><p class="product-copy">A cheerful avocado character for desks, shelves and small gifts.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="couple-frame" data-category="clay gifts" data-title="Clay Couple Photo Frame" data-image="assets/asset-10.png"><div class="product-image landscape"><img src="assets/asset-10.png" alt="Personalised clay couple photo frame"><span class="product-badge">Personalised gift</span></div><div class="product-body"><h3>Clay Couple Photo Frame</h3><p class="product-copy">A story-led keepsake frame with a handcrafted clay couple scene.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="pooja-thali" data-category="devotional gifts banquet" data-title="Golden Pooja Thali" data-image="assets/asset-7.png"><div class="product-image"><img src="assets/asset-7.png" alt="Golden decorated pooja thali"><span class="product-badge">Festive décor</span></div><div class="product-body"><h3>Golden Pooja Thali</h3><p class="product-copy">A decorated thali designed for puja, festivals and meaningful gifting.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="kids-diorama" data-category="kids clay diy" data-title="Kids’ Toys Diorama" data-image="assets/asset-8.png"><div class="product-image"><img src="assets/asset-8.png" alt="Handmade colourful kids toys scene diorama"><span class="product-badge">Kids’ project</span></div><div class="product-body"><h3>Kids’ Toys Diorama</h3><p class="product-copy">A colourful miniature scene for school projects and imaginative displays.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="mahakal-pro" data-category="devotional gifts" data-title="Jai Mahakal Peacock Hanging" data-image="assets/asset-12.png"><div class="product-image"><img src="assets/asset-12.png" alt="Peacock feather Jai Mahakal hanging with pearl details"><span class="product-badge">Devotional décor</span></div><div class="product-body"><h3>Jai Mahakal Peacock Hanging</h3><p class="product-copy">Peacock feathers, pearl accents and a devotional centrepiece.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="mood-coasters" data-category="magnets diy gifts" data-title="Today’s Mood Emoji Set" data-image="assets/asset-6.png"><div class="product-image landscape"><img src="assets/asset-6.png" alt="Colourful Today's Mood emoji coasters and fridge magnets"><span class="product-badge">Fun gift</span></div><div class="product-body"><h3>Today’s Mood Emoji Set</h3><p class="product-copy">Expressive mini faces for coasters, magnets or a playful gift set.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="doll-planter" data-category="diy gifts" data-title="Traditional Doll Planter" data-image="assets/asset-9.png"><div class="product-image"><img src="assets/asset-9.png" alt="Traditional doll planter in a colourful outfit"><span class="product-badge">Handmade décor</span></div><div class="product-body"><h3>Traditional Doll Planter</h3><p class="product-copy">A characterful planter dressed in bright traditional details.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="lotus-pink" data-category="pipe flowers diy banquet" data-title="Pink Lotus Bloom" data-image="assets/asset-3.png"><div class="product-image landscape"><img src="assets/asset-3.png" alt="Pink and purple lotus creation with teal leaves"><span class="product-badge">Pipe-cleaner art</span></div><div class="product-body"><h3>Pink Lotus Bloom</h3><p class="product-copy">Layered pink petals, purple edging and teal leaves around a jute centre.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="lotus-pearl" data-category="pipe flowers diy banquet" data-title="Pearl Lotus Bloom" data-image="assets/asset-13.png"><div class="product-image landscape"><img src="assets/asset-13.png" alt="Pearl-detailed pink lotus creation"><span class="product-badge">Pipe-cleaner art</span></div><div class="product-body"><h3>Pearl Lotus Bloom</h3><p class="product-copy">A lotus variation finished with pearl-tipped petals and leaves.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="painted-stone" data-category="paintings devotional diy" data-title="Painted Stone Décor" data-image="assets/asset-14.png"><div class="product-image landscape"><img src="assets/asset-14.png" alt="Painted decorative stone on a blue pearl and mirror base"><span class="product-badge">Hand-painted</span></div><div class="product-body"><h3>Painted Stone Décor</h3><p class="product-copy">A painted keepsake finished on a blue pearl and mirror base.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <article class="product" data-id="mahakal-classic" data-category="devotional diy" data-title="Peacock Mahakal Garland" data-image="assets/asset-15.png"><div class="product-image"><img src="assets/asset-15.png" alt="Peacock feather Mahakal garland with pearl strands"><span class="product-badge">Devotional décor</span></div><div class="product-body"><h3>Peacock Mahakal Garland</h3><p class="product-copy">A flowing pearl garland with peacock feathers and blue accents.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
-        <p class="empty" id="empty-category" hidden>No pieces match this search yet. Try another word or view all products.</p>
+        <article class="product" data-id="clay-family" data-category="clay" data-title="Clay Family Figurines" data-image="assets/asset-1.png"><div class="product-image"><img src="assets/asset-1.png" alt="Cute handmade clay family figurines"><span class="product-badge">Clay Creations</span></div><div class="product-body"><h3>Clay Family Figurines</h3><p class="product-copy">A playful little family shaped in clay with tiny personalised details.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="avocado" data-category="clay" data-title="Avocado Desk Décor" data-image="assets/asset-11.png"><div class="product-image"><img src="assets/asset-11.png" alt="Cute smiling avocado desk décor"><span class="product-badge">Clay Creations</span></div><div class="product-body"><h3>Avocado Desk Décor</h3><p class="product-copy">A cheerful avocado character for desks, shelves and small gifts.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="hanuman" data-category="devotional" data-title="Hand-painted Hanuman Statue" data-image="assets/asset-4.png"><div class="product-image"><img src="assets/asset-4.png" alt="Colourful hand-painted Hanuman statue"><span class="product-badge">Devotional Art</span></div><div class="product-body"><h3>Hand-painted Hanuman Statue</h3><p class="product-copy">Detailed devotional colourwork with a vibrant, expressive finish.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="stone-deity-pro" data-category="devotional" data-title="Painted Stone Deity" data-image="assets/asset-5.png"><div class="product-image"><img src="assets/asset-5.png" alt="Hand-painted stone deity on a decorated pearl base"><span class="product-badge">Devotional Art</span></div><div class="product-body"><h3>Painted Stone Deity</h3><p class="product-copy">A smooth painted stone presented on a pearl and mirror-work base.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="pooja-thali" data-category="devotional" data-title="Golden Pooja Thali" data-image="assets/asset-7.png"><div class="product-image"><img src="assets/asset-7.png" alt="Golden decorated pooja thali"><span class="product-badge">Devotional Art</span></div><div class="product-body"><h3>Golden Pooja Thali</h3><p class="product-copy">A decorated thali for puja, festivals and meaningful gifting.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="mahakal-classic" data-category="devotional" data-title="Peacock Mahakal Garland" data-image="assets/asset-15.png"><div class="product-image"><img src="assets/asset-15.png" alt="Peacock feather Mahakal garland with pearl strands"><span class="product-badge">Devotional Art</span></div><div class="product-body"><h3>Peacock Mahakal Garland</h3><p class="product-copy">A flowing pearl garland with peacock feathers and blue accents.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="lotus-pink" data-category="coasters" data-title="Pink Lotus Coaster" data-image="assets/asset-3.png"><div class="product-image"><img src="assets/asset-3.png" alt="Pink and purple lotus coaster with teal leaves"><span class="product-badge">Table Décor</span></div><div class="product-body"><h3>Pink Lotus Coaster</h3><p class="product-copy">Layered pink petals, purple edging and teal leaves around a jute centre.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="lotus-pearl" data-category="coasters" data-title="Pearl Lotus Coaster" data-image="assets/asset-13.png"><div class="product-image"><img src="assets/asset-13.png" alt="Pearl-detailed pink lotus coaster"><span class="product-badge">Table Décor</span></div><div class="product-body"><h3>Pearl Lotus Coaster</h3><p class="product-copy">A lotus variation finished with pearl-tipped petals and leaves.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="mood-coasters" data-category="coasters" data-title="Today’s Mood Emoji Coasters" data-image="assets/asset-6.png"><div class="product-image"><img src="assets/asset-6.png" alt="Colourful Today’s Mood emoji coasters"><span class="product-badge">Table Décor</span></div><div class="product-body"><h3>Today’s Mood Emoji Coasters</h3><p class="product-copy">Expressive mini faces for a cheerful tabletop or playful gift set.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="painted-stone" data-category="coasters" data-title="Painted Stone Table Décor" data-image="assets/asset-14.png"><div class="product-image"><img src="assets/asset-14.png" alt="Painted decorative stone on a blue pearl and mirror base"><span class="product-badge">Table Décor</span></div><div class="product-body"><h3>Painted Stone Table Décor</h3><p class="product-copy">A painted keepsake finished on a blue pearl and mirror base.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="hibiscus" data-category="hangings" data-title="Hibiscus Hanging Décor" data-image="assets/asset-2.png"><div class="product-image"><img src="assets/asset-2.png" alt="Red hibiscus flowers arranged as hanging décor"><span class="product-badge">Door Hanging</span></div><div class="product-body"><h3>Hibiscus Hanging Décor</h3><p class="product-copy">Statement red blooms arranged to brighten a doorway or festive corner.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="mahakal-pro" data-category="hangings" data-title="Jai Mahakal Peacock Hanging" data-image="assets/asset-12.png"><div class="product-image"><img src="assets/asset-12.png" alt="Peacock feather Jai Mahakal hanging with pearl details"><span class="product-badge">Wall Hanging</span></div><div class="product-body"><h3>Jai Mahakal Peacock Hanging</h3><p class="product-copy">Peacock feathers, pearl accents and a devotional centrepiece for display.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="kids-diorama" data-category="kids" data-title="Kids’ Toys Diorama" data-image="assets/asset-8.png"><div class="product-image"><img src="assets/asset-8.png" alt="Handmade colourful kids toys scene diorama"><span class="product-badge">Kids’ Project</span></div><div class="product-body"><h3>Kids’ Toys Diorama</h3><p class="product-copy">A colourful miniature scene for school projects and imaginative displays.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="couple-frame" data-category="gifts" data-title="Clay Couple Photo Frame" data-image="assets/asset-10.png"><div class="product-image"><img src="assets/asset-10.png" alt="Personalised clay couple photo frame"><span class="product-badge">Custom Gift</span></div><div class="product-body"><h3>Clay Couple Photo Frame</h3><p class="product-copy">A story-led keepsake frame with a handcrafted clay couple scene.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <article class="product" data-id="doll-planter" data-category="gifts" data-title="Traditional Doll Planter" data-image="assets/asset-9.png"><div class="product-image"><img src="assets/asset-9.png" alt="Traditional doll planter in a colourful outfit"><span class="product-badge">Custom Décor</span></div><div class="product-body"><h3>Traditional Doll Planter</h3><p class="product-copy">A characterful planter dressed in bright traditional details.</p><div class="product-bottom"><span class="price">Price on request</span><button class="add-cart" type="button">Add to cart</button></div></div></article>
+        <p class="empty" id="empty-category" hidden>No pieces match this search. Try another word or view all products.</p>
       </div>
     </div></section>
 
-    <section class="custom-band" id="custom" aria-labelledby="custom-title"><div class="wrap custom-inner"><div class="custom-copy"><p class="eyebrow">Custom creations</p><h2 id="custom-title">Got a special idea? Let’s bring it to life.</h2><p>From resin preservation and personalised gifts to a colour, theme or craft you have in mind—describe it and start the conversation.</p><button class="button light custom-trigger" type="button">Create Your Custom Order</button></div><div class="custom-image"><img src="assets/asset-10.png" alt="A personalised handmade clay couple photo frame"></div></div></section>
+    <section class="wrap" aria-label="Explore featured collections"><div class="collection-row">
+      <article class="collection-card"><div class="collection-copy"><p class="eyebrow">Clay creations</p><h3>Small characters, personal stories.</h3><p>Figurines and playful desk décor shaped with personality.</p><button class="button filter-link" data-category="clay" type="button">Explore Clay →</button></div><img src="assets/asset-1.png" alt="Handmade clay family figurines"></article>
+      <article class="collection-card"><img src="assets/asset-5.png" alt="Painted stone deity on a pearl base"><div class="collection-copy"><p class="eyebrow">Devotional art</p><h3>Colour for sacred corners.</h3><button class="button filter-link" data-category="devotional" type="button">Explore Shringar →</button></div></article>
+      <article class="collection-card"><img src="assets/asset-8.png" alt="Colourful kids toys diorama"><div class="collection-copy"><p class="eyebrow">Kids & custom gifts</p><h3>Big imagination, tiny worlds.</h3><button class="button filter-link" data-category="kids" type="button">Explore Projects →</button></div></article>
+    </div></section>
 
-    <section class="wrap" id="about" aria-labelledby="why-title"><div class="section-head"><div><p class="eyebrow">Why choose us</p><h2 id="why-title">Thoughtful from idea to finish.</h2></div><p>Small-batch craft means more attention to the details that make a piece feel personal.</p></div><div class="reason-grid"><article class="reason"><span class="reason-number">01</span><h3>Handmade with Love</h3><p>Each piece is shaped, painted or assembled carefully by hand.</p></article><article class="reason"><span class="reason-number">02</span><h3>Customizable</h3><p>Share your preferred theme, colour, name or occasion before the quote.</p></article><article class="reason"><span class="reason-number">03</span><h3>Quality Materials</h3><p>Materials and finishing choices are discussed for the design you select.</p></article><article class="reason"><span class="reason-number">04</span><h3>Fast & Safe Shipping</h3><p>Timelines, packing and delivery are confirmed before you place the order.</p></article></div></section>
+    <section class="gallery-section" id="gallery" aria-labelledby="gallery-title"><div class="wrap"><div class="section-head"><p class="eyebrow">In the studio</p><h2 id="gallery-title">Watch the making.</h2><p>These craft videos play silently while visible and pause when they leave the screen.</p></div><div class="film-grid">
+      <figure class="film"><video controls muted playsinline preload="metadata" poster="assets/asset-16.jpg" aria-label="Craft making video one"><source src="assets/video-1.mp4" type="video/mp4">Your browser does not support this video.</video><figcaption><strong>Flower details</strong><span>Craft in progress</span></figcaption></figure>
+      <figure class="film"><video controls muted playsinline preload="metadata" poster="assets/asset-18.jpg" aria-label="Craft making video two"><source src="assets/video-2.mp4" type="video/mp4">Your browser does not support this video.</video><figcaption><strong>Decorative layers</strong><span>Craft in progress</span></figcaption></figure>
+      <figure class="film"><video controls muted playsinline preload="metadata" poster="assets/asset-20.jpg" aria-label="Craft making video three"><source src="assets/video-3.mp4" type="video/mp4">Your browser does not support this video.</video><figcaption><strong>Painted finish</strong><span>Craft in progress</span></figcaption></figure>
+    </div></div></section>
 
-    <section class="wrap showcase" aria-label="Featured collections">
-      <article class="showcase-row"><div class="showcase-image"><img src="assets/asset-5.png" alt="Hand-painted stone deity on a pearl base"></div><div class="showcase-copy"><p class="eyebrow">Shringar & devotional art</p><h3>Colour for sacred corners.</h3><p>Painted deities, peacock hangings and puja décor made with detailed finishes for festivals, gifting and everyday devotion.</p><button class="button filter-link" data-category="devotional" type="button">Explore devotional art</button></div></article>
-      <article class="showcase-row"><div class="showcase-image"><img src="assets/asset-8.png" alt="Colourful handmade kids toys diorama"></div><div class="showcase-copy"><p class="eyebrow">Kids’ projects</p><h3>Big imagination, tiny worlds.</h3><p>Playful dioramas and school-project ideas with colour, character and plenty of room to customise.</p><button class="button filter-link" data-category="kids" type="button">Explore kids’ projects</button></div></article>
-      <article class="showcase-row"><div class="showcase-image"><img src="assets/asset-6.png" alt="Today's Mood emoji coasters and magnets"></div><div class="showcase-copy"><p class="eyebrow">Gifts & handmade décor</p><h3>Little things that make people smile.</h3><p>Personalised frames, planters, magnets and cheerful desk décor for birthdays, milestones or just because.</p><button class="button filter-link" data-category="gifts" type="button">Explore gift ideas</button></div></article>
-    </section>
-
-    <section class="studio" id="gallery" aria-labelledby="gallery-title"><div class="wrap"><div class="section-head"><div><p class="eyebrow">In the studio</p><h2 id="gallery-title">Watch the making.</h2></div><p>These videos play silently while they are in view, so you can see the textures and details come together.</p></div><div class="film-grid"><figure class="film"><video controls muted playsinline preload="metadata" poster="assets/asset-16.jpg" aria-label="Craft making video one"><source src="assets/video-1.mp4" type="video/mp4">Your browser does not support this video.</video><figcaption><strong>Flower details</strong><span>Craft in progress</span></figcaption></figure><figure class="film"><video controls muted playsinline preload="metadata" poster="assets/asset-18.jpg" aria-label="Craft making video two"><source src="assets/video-2.mp4" type="video/mp4">Your browser does not support this video.</video><figcaption><strong>Decorative layers</strong><span>Craft in progress</span></figcaption></figure><figure class="film"><video controls muted playsinline preload="metadata" poster="assets/asset-20.jpg" aria-label="Craft making video three"><source src="assets/video-3.mp4" type="video/mp4">Your browser does not support this video.</video><figcaption><strong>Painted finish</strong><span>Craft in progress</span></figcaption></figure></div></div></section>
-
-    <section class="wrap" aria-labelledby="moments-title"><div class="section-head"><div><p class="eyebrow">Made for happy moments</p><h2 id="moments-title">A piece for every reason.</h2></div><p>Choose a ready design or use it as the starting point for something personal.</p></div><div class="moments-grid"><article class="moment"><h3>Meaningful gifting</h3><p>Turn a shared memory, favourite colour or special date into a custom keepsake.</p></article><article class="moment"><h3>Festival-ready décor</h3><p>Discuss devotional pieces, puja décor and coordinated details for the occasion.</p></article><article class="moment"><h3>Joyful everyday corners</h3><p>Add colour to a desk, shelf, fridge or doorway with a playful handmade accent.</p></article></div></section>
-
-    <section class="journey" aria-labelledby="journey-title"><div class="wrap section-head"><div><p class="eyebrow">Follow our journey</p><h2 id="journey-title">From the worktable.</h2></div><p>A closer look at recent shapes, finishes and handmade details from the collection.</p></div><div class="journey-strip"><img src="assets/asset-11.png" alt="Smiling avocado décor"><img src="assets/asset-7.png" alt="Golden pooja thali"><img src="assets/asset-9.png" alt="Traditional doll planter"><img src="assets/asset-13.png" alt="Pearl lotus creation"><img src="assets/asset-12.png" alt="Peacock Mahakal hanging"><img src="assets/asset-1.png" alt="Clay family figurines"></div></section>
-
-    <section class="order-section" aria-labelledby="order-title"><div class="wrap"><p class="eyebrow">How to order</p><h2 id="order-title">Four easy steps.</h2><div class="steps"><article class="step"><span>01</span><h3>Choose</h3><p>Add one or more favourites to your session cart.</p></article><article class="step"><span>02</span><h3>Customize</h3><p>Share the colour, size, theme or personal details you want.</p></article><article class="step"><span>03</span><h3>Confirm</h3><p>Get the price, availability and delivery details on WhatsApp.</p></article><article class="step"><span>04</span><h3>Receive</h3><p>Your piece is made, packed and sent after confirmation.</p></article></div></div></section>
+    <section class="wrap" aria-label="Customer feedback, social gallery and order steps"><div class="bottom-row">
+      <article class="bottom-card"><h3>Happy Customers</h3><span class="placeholder">Sample review placeholder</span><div class="review-shell"><img src="assets/asset-9.png" alt="Handmade doll planter detail"><p>Real customer feedback can be added here once it is shared and approved.</p></div></article>
+      <article class="bottom-card"><h3>Follow Our Journey</h3><div class="journey-images"><img src="assets/asset-11.png" alt="Smiling avocado décor"><img src="assets/asset-7.png" alt="Golden pooja thali"><img src="assets/asset-9.png" alt="Traditional doll planter"><img src="assets/asset-13.png" alt="Pearl lotus coaster"><img src="assets/asset-12.png" alt="Peacock Mahakal hanging"><img src="assets/asset-1.png" alt="Clay family figurines"></div><a class="button instagram" id="instagram-link" href="#">Follow Us on Instagram</a></article>
+      <article class="bottom-card order-card"><h3>How to Order</h3><div class="steps"><div class="step"><span>1</span><strong>Choose Your Product</strong></div><div class="step"><span>2</span><strong>Customize<br>(if needed)</strong></div><div class="step"><span>3</span><strong>Confirm on WhatsApp</strong></div><div class="step"><span>4</span><strong>Receive Happiness</strong></div></div></article>
+    </div></section>
   </main>
 
-  <footer id="contact"><div class="wrap footer-grid"><div><h3>Handmade by Deepanshi Sharma</h3><p>Browse the collection, build a cart or start with a completely custom idea. Prices and timelines are confirmed directly on WhatsApp.</p></div><div><h3>Explore</h3><div class="footer-links"><a href="#shop">Shop</a><a href="#custom">Custom Creations</a><a href="#gallery">Gallery</a><a href="#about">About</a></div></div><div><h3>Talk to us</h3><a class="social-link" href="https://wa.me/918851324077" target="_blank" rel="noopener" aria-label="Contact Deepanshi on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a9.7 9.7 0 0 0-8.4 14.6L2 22l5.6-1.5A9.8 9.8 0 1 0 12 2Zm0 17.6a7.6 7.6 0 0 1-3.9-1.1l-.3-.2-3.3.9.9-3.2-.2-.3A7.7 7.7 0 1 1 12 19.6Zm4.2-5.7c-.2-.1-1.3-.7-1.5-.7-.2-.1-.4-.1-.6.1l-.7.9c-.2.2-.3.2-.5.1-1.5-.7-2.5-1.4-3.5-3.1-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.6L9.5 7.5c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7 1-.1 1.3-.7 1.5-1.2.2-.5.2-1 .1-1.1-.1-.2-.3-.2-.6-.3Z"/></svg></a></div></div></footer>
+  <footer id="contact"><div class="wrap footer-grid"><div><p class="footer-brand">Deepanshi Sharma</p><p>Handmade • Customized • With Love</p><p style="margin-top:10px">Browse the collection or start with a custom idea. Prices and timelines are confirmed directly on WhatsApp.</p></div><div><h3>Explore</h3><div class="footer-links"><a href="#shop">Shop</a><a href="#custom">Custom Creations</a><a href="#gallery">Gallery</a><a href="#about">About</a></div></div><div><h3>Connect</h3><p>Choose a product or open the custom order form to continue on WhatsApp.</p><div class="footer-actions" style="margin-top:12px"><a class="social-link" href="#" id="footer-instagram" aria-label="Instagram link coming soon">◎</a></div></div></div></footer>
 
   <div class="overlay" id="overlay" aria-hidden="true"></div>
-  <aside class="drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true"><div class="drawer-head"><h2 id="cart-title">Your cart</h2><button class="close-btn" id="close-cart" type="button" aria-label="Close cart">×</button></div><div class="drawer-body"><p class="session-note"><strong>Session-only cart:</strong> your selections stay only while this page is open and reset when you refresh or close it.</p><div id="cart-items"></div><form class="checkout" id="checkout-form" novalidate><h3>Prepare your enquiry</h3><p>Add your details. Your order is confirmed only after the seller replies with prices, availability and delivery information.</p><div class="field"><label for="customer-name">Name</label><input id="customer-name" autocomplete="name" required></div><div class="field"><label for="customer-phone">Phone number</label><input id="customer-phone" inputmode="tel" autocomplete="tel" required></div><div class="field"><label for="customer-address">Delivery address / city</label><textarea id="customer-address" autocomplete="street-address" required></textarea></div><button class="button primary" type="submit">Continue on WhatsApp</button><p class="form-error" id="form-error" role="alert"></p></form></div></aside>
+  <aside class="drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true"><div class="drawer-head"><h2 id="cart-title">Your cart</h2><button class="close-btn" id="close-cart" type="button" aria-label="Close cart">×</button></div><div class="drawer-body"><p class="session-note"><strong>Session-only cart:</strong> selections reset when this page is refreshed or closed.</p><div id="cart-items"></div><form class="checkout" id="checkout-form" novalidate><h3>Prepare your enquiry</h3><p>Your order is confirmed only after prices, availability and delivery details are agreed on WhatsApp.</p><div class="field"><label for="customer-name">Name</label><input id="customer-name" autocomplete="name" required></div><div class="field"><label for="customer-phone">Phone number</label><input id="customer-phone" inputmode="tel" autocomplete="tel" required></div><div class="field"><label for="customer-address">Delivery address / city</label><textarea id="customer-address" autocomplete="street-address" required></textarea></div><button class="button primary" type="submit">Continue on WhatsApp</button><p class="form-error" id="form-error" role="alert"></p></form></div></aside>
 
-  <section class="modal" id="custom-modal" role="dialog" aria-modal="true" aria-labelledby="custom-modal-title" aria-hidden="true"><div class="modal-head"><div><p class="eyebrow">Tell us your idea</p><h2 id="custom-modal-title">Create something custom</h2></div><button class="close-btn" id="close-custom" type="button" aria-label="Close custom order form">×</button></div><p class="modal-copy">Resin preservation, personalised gifting, a favourite colour or an idea you have not seen here yet—describe it below.</p><form class="custom-form" id="custom-form" novalidate><div class="field"><label for="custom-name">Name</label><input id="custom-name" autocomplete="name" required></div><div class="field"><label for="custom-phone">Phone number</label><input id="custom-phone" inputmode="tel" autocomplete="tel" required></div><div class="field"><label for="custom-category">Preferred category</label><select id="custom-category" required><option value="">Choose one</option><option>Resin preservation</option><option>Pipe-cleaner creation</option><option>Clay creation</option><option>Shringar / devotional art</option><option>Flowers</option><option>Kids’ project</option><option>Fridge magnet</option><option>Gift / handmade décor</option><option>Something else</option></select></div><div class="field"><label for="custom-idea">What would you like?</label><textarea id="custom-idea" placeholder="Tell us the idea, occasion, preferred colours, size and any personal details…" required></textarea></div><button class="button primary" type="submit">Send Custom Enquiry</button><p class="form-error" id="custom-error" role="alert"></p></form></section>
+  <section class="modal" id="custom-modal" role="dialog" aria-modal="true" aria-labelledby="custom-modal-title" aria-hidden="true"><div class="modal-head"><div><p class="eyebrow">Tell us your idea</p><h2 id="custom-modal-title">Create something custom</h2></div><button class="close-btn" id="close-custom" type="button" aria-label="Close custom order form">×</button></div><p class="modal-copy">Describe the occasion, category, colours, size and personal details you have in mind.</p><form class="custom-form" id="custom-form" novalidate><div class="field"><label for="custom-name">Name</label><input id="custom-name" autocomplete="name" required></div><div class="field"><label for="custom-phone">Phone number</label><input id="custom-phone" inputmode="tel" autocomplete="tel" required></div><div class="field"><label for="custom-category">Preferred category</label><select id="custom-category" required><option value="">Choose one</option><option>Clay Creations</option><option>Devotional Art & Shringar</option><option>Coasters & Table Décor</option><option>Wall & Door Hangings</option><option>Kids' Projects</option><option>Gifts & Custom Décor</option><option>Something else</option></select></div><div class="field"><label for="custom-idea">What would you like?</label><textarea id="custom-idea" placeholder="Tell us the idea, occasion, preferred colours, size and any personal details…" required></textarea></div><button class="button primary" type="submit">Send Custom Enquiry</button><p class="form-error" id="custom-error" role="alert"></p></form></section>
   <div class="status" id="status" role="status" aria-live="polite"></div>
 
   <script>
   (function(){
-    var cart={},products={},lastFocus=null;
+    var cart={},products={},lastFocus=null,currentCategory='all';
     var productEls=[].slice.call(document.querySelectorAll('.product'));
     var drawer=document.getElementById('cart-drawer'),modal=document.getElementById('custom-modal'),overlay=document.getElementById('overlay');
     var cartItems=document.getElementById('cart-items'),cartCount=document.getElementById('cart-count'),status=document.getElementById('status'),statusTimer;
-    productEls.forEach(function(card){
-      var id=card.getAttribute('data-id');products[id]={id:id,title:card.getAttribute('data-title'),image:card.getAttribute('data-image')};
-      card.querySelector('.add-cart').addEventListener('click',function(){cart[id]=(cart[id]||0)+1;renderCart();var btn=this;btn.textContent='Added';btn.classList.add('added');setTimeout(function(){btn.textContent='Add to cart';btn.classList.remove('added')},850);showStatus(products[id].title+' added to cart')});
-    });
+    productEls.forEach(function(card){var id=card.getAttribute('data-id');products[id]={id:id,title:card.getAttribute('data-title'),image:card.getAttribute('data-image')};card.querySelector('.add-cart').addEventListener('click',function(){cart[id]=(cart[id]||0)+1;renderCart();var btn=this;btn.textContent='Added';btn.classList.add('added');setTimeout(function(){btn.textContent='Add to cart';btn.classList.remove('added')},850);showStatus(products[id].title+' added to cart')})});
     function totalCount(){return Object.keys(cart).reduce(function(sum,id){return sum+cart[id]},0)}
     function showStatus(message){clearTimeout(statusTimer);status.textContent=message;status.classList.add('show');statusTimer=setTimeout(function(){status.classList.remove('show')},1900)}
-    function renderCart(){
-      cartCount.textContent=totalCount();cartItems.innerHTML='';var ids=Object.keys(cart).filter(function(id){return cart[id]>0});
-      if(!ids.length){var empty=document.createElement('div');empty.className='cart-empty';empty.innerHTML='<strong>Your cart is empty.</strong><br><span>Add a handmade piece to begin.</span>';cartItems.appendChild(empty)}
-      ids.forEach(function(id){var p=products[id],row=document.createElement('div');row.className='cart-item';var img=document.createElement('img');img.src=p.image;img.alt='';var info=document.createElement('div'),heading=document.createElement('h3');heading.textContent=p.title;var qty=document.createElement('div');qty.className='qty';var minus=document.createElement('button'),count=document.createElement('span'),plus=document.createElement('button');minus.type=plus.type='button';minus.textContent='−';plus.textContent='+';count.textContent=cart[id];minus.setAttribute('aria-label','Decrease '+p.title+' quantity');plus.setAttribute('aria-label','Increase '+p.title+' quantity');qty.appendChild(minus);qty.appendChild(count);qty.appendChild(plus);info.appendChild(heading);info.appendChild(qty);var remove=document.createElement('button');remove.type='button';remove.className='remove';remove.textContent='Remove';minus.addEventListener('click',function(){cart[id]--;if(cart[id]<=0)delete cart[id];renderCart()});plus.addEventListener('click',function(){cart[id]++;renderCart()});remove.addEventListener('click',function(){delete cart[id];renderCart()});row.appendChild(img);row.appendChild(info);row.appendChild(remove);cartItems.appendChild(row)});
-    }
+    function renderCart(){cartCount.textContent=totalCount();cartItems.innerHTML='';var ids=Object.keys(cart).filter(function(id){return cart[id]>0});if(!ids.length){var empty=document.createElement('div');empty.className='cart-empty';empty.innerHTML='<strong>Your cart is empty.</strong><br><span>Add a handmade piece to begin.</span>';cartItems.appendChild(empty)}ids.forEach(function(id){var p=products[id],row=document.createElement('div');row.className='cart-item';var img=document.createElement('img');img.src=p.image;img.alt='';var info=document.createElement('div'),heading=document.createElement('h3');heading.textContent=p.title;var qty=document.createElement('div');qty.className='qty';var minus=document.createElement('button'),count=document.createElement('span'),plus=document.createElement('button');minus.type=plus.type='button';minus.textContent='−';plus.textContent='+';count.textContent=cart[id];minus.setAttribute('aria-label','Decrease '+p.title+' quantity');plus.setAttribute('aria-label','Increase '+p.title+' quantity');qty.appendChild(minus);qty.appendChild(count);qty.appendChild(plus);info.appendChild(heading);info.appendChild(qty);var remove=document.createElement('button');remove.type='button';remove.className='remove';remove.textContent='Remove';minus.addEventListener('click',function(){cart[id]--;if(cart[id]<=0)delete cart[id];renderCart()});plus.addEventListener('click',function(){cart[id]++;renderCart()});remove.addEventListener('click',function(){delete cart[id];renderCart()});row.appendChild(img);row.appendChild(info);row.appendChild(remove);cartItems.appendChild(row)});}
     function openLayer(layer,focusEl){lastFocus=document.activeElement;drawer.classList.remove('open');modal.classList.remove('open');drawer.setAttribute('aria-hidden','true');modal.setAttribute('aria-hidden','true');layer.classList.add('open');layer.setAttribute('aria-hidden','false');overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');document.body.classList.add('locked');setTimeout(function(){focusEl.focus()},30)}
     function closeLayers(){drawer.classList.remove('open');modal.classList.remove('open');drawer.setAttribute('aria-hidden','true');modal.setAttribute('aria-hidden','true');overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');document.body.classList.remove('locked');if(lastFocus)lastFocus.focus()}
-    document.getElementById('open-cart').addEventListener('click',function(){openLayer(drawer,document.getElementById('close-cart'))});
-    document.getElementById('close-cart').addEventListener('click',closeLayers);document.getElementById('close-custom').addEventListener('click',closeLayers);overlay.addEventListener('click',closeLayers);
-    document.querySelectorAll('.custom-trigger').forEach(function(btn){btn.addEventListener('click',function(){document.getElementById('mobile-menu').classList.remove('open');openLayer(modal,document.getElementById('close-custom'))})});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLayers()});
-
-    function applyFilter(category,label,search){var visible=0,term=(search||'').toLowerCase();productEls.forEach(function(card){var categories=card.getAttribute('data-category').split(' '),text=(card.getAttribute('data-title')+' '+card.textContent).toLowerCase(),show=(!category||category==='all'||categories.indexOf(category)>-1)&&(!term||text.indexOf(term)>-1);card.hidden=!show;if(show)visible++});document.getElementById('empty-category').hidden=visible!==0;document.getElementById('active-filter').textContent=label||'All creations'}
-    document.querySelectorAll('.category-tile,.filter-link').forEach(function(button){button.addEventListener('click',function(){var cat=button.getAttribute('data-category');applyFilter(cat,button.textContent.trim());document.getElementById('shop').scrollIntoView({behavior:'smooth'})})});
-    document.getElementById('view-all').addEventListener('click',function(){document.getElementById('product-search').value='';applyFilter('all','All creations');document.getElementById('shop').scrollIntoView({behavior:'smooth'})});
-    var searchBar=document.getElementById('search-bar'),searchButton=document.getElementById('search-button'),searchInput=document.getElementById('product-search');
-    searchButton.addEventListener('click',function(){var open=!searchBar.classList.contains('open');searchBar.classList.toggle('open',open);searchButton.setAttribute('aria-expanded',open?'true':'false');if(open)searchInput.focus()});
-    document.getElementById('search-close').addEventListener('click',function(){searchBar.classList.remove('open');searchButton.setAttribute('aria-expanded','false');searchButton.focus()});
-    searchInput.addEventListener('input',function(){applyFilter('all',this.value.trim()?'Search: “'+this.value.trim()+'”':'All creations',this.value);document.getElementById('shop').scrollIntoView({behavior:'smooth'})});
-    document.getElementById('account-button').addEventListener('click',function(){showStatus('No account needed — order directly on WhatsApp')});
-    var menuButton=document.getElementById('menu-button'),mobileMenu=document.getElementById('mobile-menu');
-    menuButton.addEventListener('click',function(){var open=!mobileMenu.classList.contains('open');mobileMenu.classList.toggle('open',open);menuButton.setAttribute('aria-expanded',open?'true':'false')});
-    mobileMenu.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){mobileMenu.classList.remove('open');menuButton.setAttribute('aria-expanded','false')})});
-
+    document.getElementById('open-cart').addEventListener('click',function(){openLayer(drawer,document.getElementById('close-cart'))});document.getElementById('close-cart').addEventListener('click',closeLayers);document.getElementById('close-custom').addEventListener('click',closeLayers);overlay.addEventListener('click',closeLayers);document.querySelectorAll('.custom-trigger').forEach(function(btn){btn.addEventListener('click',function(){document.getElementById('mobile-menu').classList.remove('open');openLayer(modal,document.getElementById('close-custom'))})});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLayers()});
+    function categoryLabel(category){var labels={all:'All',clay:'Clay Creations',devotional:'Devotional Art & Shringar',coasters:'Coasters & Table Décor',hangings:'Wall & Door Hangings',kids:"Kids' Projects",gifts:'Gifts & Custom Décor'};return labels[category]||'All'}
+    function setActiveTab(category){document.querySelectorAll('.tab').forEach(function(tab){var active=tab.getAttribute('data-category')===category;tab.classList.toggle('active',active);tab.setAttribute('aria-pressed',active?'true':'false')})}
+    function applyFilter(category,search){currentCategory=category||'all';var visible=0,term=(search||'').toLowerCase();productEls.forEach(function(card){var cardCategory=card.getAttribute('data-category'),text=(card.getAttribute('data-title')+' '+card.textContent).toLowerCase(),show=(currentCategory==='all'||cardCategory===currentCategory)&&(!term||text.indexOf(term)>-1);card.hidden=!show;if(show)visible++});document.getElementById('empty-category').hidden=visible!==0;document.getElementById('active-filter').textContent=term?'Search: “'+search.trim()+'”':categoryLabel(currentCategory);setActiveTab(currentCategory)}
+    document.querySelectorAll('.category-tile,.filter-link,.tab').forEach(function(button){button.addEventListener('click',function(){var cat=button.getAttribute('data-category');document.getElementById('product-search').value='';applyFilter(cat,'');document.getElementById('shop').scrollIntoView({behavior:'smooth'})})});
+    document.getElementById('view-all').addEventListener('click',function(){document.getElementById('product-search').value='';applyFilter('all','');document.getElementById('shop').scrollIntoView({behavior:'smooth'})});
+    var searchBar=document.getElementById('search-bar'),searchButton=document.getElementById('search-button'),searchInput=document.getElementById('product-search');searchButton.addEventListener('click',function(){var open=!searchBar.classList.contains('open');searchBar.classList.toggle('open',open);searchButton.setAttribute('aria-expanded',open?'true':'false');if(open)searchInput.focus()});document.getElementById('search-close').addEventListener('click',function(){searchBar.classList.remove('open');searchButton.setAttribute('aria-expanded','false');searchButton.focus()});searchInput.addEventListener('input',function(){applyFilter('all',this.value)});
+    var menuButton=document.getElementById('menu-button'),mobileMenu=document.getElementById('mobile-menu');menuButton.addEventListener('click',function(){var open=!mobileMenu.classList.contains('open');mobileMenu.classList.toggle('open',open);menuButton.setAttribute('aria-expanded',open?'true':'false')});mobileMenu.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){mobileMenu.classList.remove('open');menuButton.setAttribute('aria-expanded','false')})});
+    ['instagram-link','footer-instagram'].forEach(function(id){document.getElementById(id).addEventListener('click',function(e){e.preventDefault();showStatus('Instagram link will be added soon')})});
     document.getElementById('checkout-form').addEventListener('submit',function(e){e.preventDefault();var error=document.getElementById('form-error');error.textContent='';var ids=Object.keys(cart).filter(function(id){return cart[id]>0}),name=document.getElementById('customer-name').value.trim(),phone=document.getElementById('customer-phone').value.trim(),address=document.getElementById('customer-address').value.trim();if(!ids.length){error.textContent='Add at least one product to your cart.';return}if(!name||!phone||!address){error.textContent='Please fill in your name, phone number and delivery address.';return}var lines=['Hello Deepanshi, I would like to ask the price and availability for:',''];ids.forEach(function(id,index){lines.push((index+1)+'. '+products[id].title+' × '+cart[id])});lines.push('','Customer: '+name,'Phone: '+phone,'Delivery address / city: '+address,'','Please confirm prices, availability, delivery charges and next steps.');var message=encodeURIComponent(lines.join('\n'));window.open('https://wa.me/917011489903?text='+message,'_blank','noopener');window.location.href='https://wa.me/918851324077?text='+message});
     document.getElementById('custom-form').addEventListener('submit',function(e){e.preventDefault();var error=document.getElementById('custom-error');error.textContent='';var name=document.getElementById('custom-name').value.trim(),phone=document.getElementById('custom-phone').value.trim(),category=document.getElementById('custom-category').value,idea=document.getElementById('custom-idea').value.trim();if(!name||!phone||!category||!idea){error.textContent='Please complete every field so the idea can be understood clearly.';return}var lines=['Hello Deepanshi, I would like to discuss a custom creation.','','Name: '+name,'Phone: '+phone,'Preferred category: '+category,'My idea: '+idea,'','Please share what is possible, the estimated price and timeline.'];window.location.href='https://wa.me/918851324077?text='+encodeURIComponent(lines.join('\n'))});
-
-    var videos=[].slice.call(document.querySelectorAll('.film video')),reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function playVisible(video){if(reduceMotion||document.hidden||video.getAttribute('data-in-view')!=='true')return;video.muted=true;var promise=video.play();if(promise&&promise.catch)promise.catch(function(){})}
-    if('IntersectionObserver' in window&&!reduceMotion){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){var video=entry.target,visible=entry.isIntersecting&&entry.intersectionRatio>=.45;video.setAttribute('data-in-view',visible?'true':'false');if(visible)playVisible(video);else video.pause()})},{threshold:[0,.45,1]});videos.forEach(function(video){video.defaultMuted=true;video.muted=true;observer.observe(video)});document.addEventListener('visibilitychange',function(){videos.forEach(function(video){if(document.hidden)video.pause();else playVisible(video)})})}
-    renderCart();
+    var videos=[].slice.call(document.querySelectorAll('.film video')),reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;function playVisible(video){if(reduceMotion||document.hidden||video.getAttribute('data-in-view')!=='true')return;video.muted=true;var promise=video.play();if(promise&&promise.catch)promise.catch(function(){})}if('IntersectionObserver' in window&&!reduceMotion){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){var video=entry.target,visible=entry.isIntersecting&&entry.intersectionRatio>=.45;video.setAttribute('data-in-view',visible?'true':'false');if(visible)playVisible(video);else video.pause()})},{threshold:[0,.45,1]});videos.forEach(function(video){video.defaultMuted=true;video.muted=true;observer.observe(video)});document.addEventListener('visibilitychange',function(){videos.forEach(function(video){if(document.hidden)video.pause();else playVisible(video)})})}
+    renderCart();applyFilter('all','');
   })();
   </script>
 </body>
